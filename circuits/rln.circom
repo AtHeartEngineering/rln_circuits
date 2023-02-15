@@ -1,6 +1,6 @@
 pragma circom 2.1.0;
 
-include "./incrementalMerkleTree.circom";
+include "../incrementalMerkleTree.circom";
 include "../node_modules/circomlib/circuits/poseidon.circom";
 include "../node_modules/circomlib/circuits/comparators.circom";
 
@@ -9,8 +9,8 @@ template IsInInterval(n) {
 
     signal output out;
 
-    signal let <== LessEqThan(n)(in <== [in[1], in[2]]);
-    signal get <== GreaterEqThan(n)(in <== [in[2], in[0]]);
+    signal let <== LessEqThan(n)([in[1], in[2]]);
+    signal get <== GreaterEqThan(n)([in[1], in[0]]);
 
     out <== let * get;
 }
