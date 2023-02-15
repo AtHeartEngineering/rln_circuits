@@ -32,21 +32,16 @@ template RLN(depth) {
     signal output root;
     signal output nullifier;
 
-    // Calculate identity_commitment = Poseidon(identity_secret)
     signal identity_commitment <== Poseidon(1)([identity_secret]);
 
-    // Merkle tree root output
     root <== MerkleTreeInclusionProof(depth)(identity_commitment, identity_path_index, path_elements);
 
-    // Check that 1 <= message_id <= message_limit
     signal checkInterval <== IsInInterval(16)([1, message_id, message_limit]);
     checkInterval === 1;
 
-    // Linear equation/share calculation constraints:
     signal a_1 <== Poseidon(3)([identity_secret, external_nullifier, message_id]);
     y <== identity_secret + a_1 * x;
 
-    // Internal nullifier = Poseidon(a_1) output
     nullifier <== Poseidon(1)([a_1]);
 }
 
