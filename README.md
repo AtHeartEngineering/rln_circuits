@@ -1,5 +1,11 @@
 # RLN Circuits
 
+## This repo is deprecated. Circuits are now [here](https://github.com/Rate-Limiting-Nullifier/circom-rln)
+
+___
+___
+___
+
 **Cloned from: [https://github.com/privacy-scaling-explorations/rln](https://github.com/privacy-scaling-explorations/rln)**
 
 Rate Limit Nullifier implemented in Circom.
